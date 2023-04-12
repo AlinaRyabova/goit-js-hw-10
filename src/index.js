@@ -18,7 +18,7 @@ function onInputSearch(e) {
 
   if (!value) {
     addHidden();
-    clearInput();
+    clearInfoList();
     return;
   }
 
@@ -32,7 +32,7 @@ function onInputSearch(e) {
       renderCountries(data);
     })
     .catch(err => {
-      clearInput();
+      clearInfoList();
       Notify.failure('Oops, there is no country with that name');
     });
 }
@@ -81,7 +81,7 @@ function renderCountries(result) {
   }
 }
 
-function clearInput() {
+function clearInfoList() {
   countriesList.innerHTML = '';
   countryInfo.innerHTML = '';
 }
