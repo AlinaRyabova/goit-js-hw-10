@@ -30,12 +30,28 @@ function onInputSearch(e) {
       }
       renderCountries(data);
     })
-    .catch(err => {
-      clearInfoList();
-      Notify.failure('Oops, there is no country with that name');
+    .catch(error => {
+      if ((error.status = 404)) {
+        clearInfoList();
+        Notify.failure('Oops, there is no country with that name');
+      }
     });
 }
 
+// fetchCountries(value)
+//     .then(data => {
+//       if (data.length > 10) {
+//         Notify.info(
+//           'Too many matches found. Please enter a more specific name.'
+//         );
+//       }
+//       renderCountries(data);
+//     })
+//     .catch(err => {
+//       clearInfoList();
+//       Notify.failure('Oops, there is no country with that name');
+//     });
+// }
 const generateMarkupCountryInfo = data =>
   data.reduce(
     (acc, { flags: { svg }, name, capital, population, languages }) => {
